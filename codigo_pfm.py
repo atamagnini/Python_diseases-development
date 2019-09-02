@@ -5,10 +5,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-idh = pd.read_csv(r"C:\Users\Dell\Dropbox\Cursos finalizados\Master\Unidades\PFM\excels\nuevo\idh_csv.csv",
+idh = pd.read_csv(r'fileroot\idh_csv.csv',
                   sep = ';', header = [0])
 
-salud = pd.read_csv(r'C:\Users\Dell\Dropbox\Cursos finalizados\Master\Unidades\PFM\excels\nuevo\salud_csv.csv',
+salud = pd.read_csv(r'fileroot\salud_csv.csv',
                     sep = ';', header = [0])
 
 merged_df = pd.merge(left=idh, right=salud, how='left', left_on='Paises',
@@ -17,7 +17,7 @@ merged_df = pd.merge(left=idh, right=salud, how='left', left_on='Paises',
 df = merged_df.sort_values(by='IDH', ascending=True)
 
 #Exportación de tabla de salud e IDH:
-#df.to_csv(r'C:\Users\Dell\Dropbox\Master\Unidades\PFM\graficos\nuevo\tabla_salud_idh')
+df.to_csv(r'fileroot\tabla_salud_idh')
 
 #Gráfico: distribución de países por categoría de IDH (alto, medio, bajo)
 plot = df['Categoria'].value_counts().plot(kind='pie', autopct='%.0f%%', 
@@ -42,7 +42,7 @@ plt.show()
 n = df2.sum(axis=0)
 n = pd.DataFrame(n, columns=['Total'])
 print(n)
-#n.to_csv(r'C:\Users\Dell\Dropbox\Master\Unidades\PFM\graficos\nuevo\total_enfermedades')
+n.to_csv(r'fileroot\total_enfermedades')
 
 #Gráfico: distribución de enfermedades terminales
 plot_2 = n['Total'].plot(kind='pie',autopct='%.0f%%', figsize=(6,6), shadow=True,
@@ -163,7 +163,7 @@ m = sns.pairplot(df, hue="Categoria", diag_kind="kde",
                                y_vars=["Total"])
 plt.show()
 
-salud_porc = pd.read_csv(r'C:\Users\Dell\Dropbox\Cursos finalizados\Master\Unidades\PFM\excels\nuevo\salud_csv_porcentajes.csv',
+salud_porc = pd.read_csv(r'fileroot\salud_csv_porcentajes.csv',
                     sep = ';', header = [0])
 
 merged_df3 = pd.merge(left=idh, right=salud_porc, how='left', left_on='Paises',
@@ -179,6 +179,6 @@ x = df3.groupby(['Categoria'])['Enfermedad_Pulmonar_Obstructiva_Cronica'].mean()
 y = df3.groupby(['Categoria'])['Cirrosis_del_higado'].mean()
 frames = [u,v,w,x,y]
 df4 = pd.concat(frames, axis=1)
-#df4.to_csv(r'C:\Users\Dell\Dropbox\Master\Unidades\PFM\graficos\nuevo\promedios_enfermedades_por_IDH')
+df4.to_csv(r'fileroot\promedios_enfermedades_por_IDH')
 df4.plot(kind="barh",figsize=(8,8), stacked=False)
 plt.show()
