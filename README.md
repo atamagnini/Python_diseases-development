@@ -1,5 +1,5 @@
 # diseases-development
-Diseases-developmente is a quick python script that shows through graphs and small tables the correlation between the causes of terminal diseases based on the development of a country. To use, edit script.py (the fileroots) and swap in your info.
+Diseases-development is a quick python script that shows through graphs and specific tables the correlation between the causes of terminal diseases based on the development of the countries. To use, edit script.py (fileroots) and swap in your info.
 
 Database is from PAHO and WHO (last published data from 2019).
 
