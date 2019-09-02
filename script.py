@@ -5,10 +5,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-idh = pd.read_csv(r"C:\Users\Dell\Dropbox\Master\Unidades\PFM\excels\idh_csv.csv",
+idh = pd.read_csv(r'fileroot',
                   sep = ';', header = [0])
 
-salud = pd.read_csv(r'C:\Users\Dell\Dropbox\Master\Unidades\PFM\excels\salud_csv.csv',
+salud = pd.read_csv(r'fileroot',
                     sep = ';', header = [0])
 
 merged_df = pd.merge(left=idh, right=salud, how='left', left_on='Paises',
